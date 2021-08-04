@@ -4,6 +4,19 @@ const { ApolloServer, gql } = require('apollo-server');
 const typeDefs = gql`
 type Query {
   getTest: [Test]
+  getLinks: [link]
+}
+type Mutation{
+  updateLink(id: Int): link
+}
+type link{
+  id: ID!
+  account_id: ID!
+  title: String
+  url: String
+  position: Int
+  thumbnailUrl: String
+  type: String
 }
 
 type Test {
