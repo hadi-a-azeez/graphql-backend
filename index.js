@@ -8,6 +8,16 @@ type Query {
 }
 type Mutation{
   updateLink(id: Int): link
+  addLink(linkObj: newLink): link
+}
+input newLink{
+
+  account_id: ID!
+  title: String
+  url: String
+  position: Int
+  thumbnailUrl: String
+  type: String
 }
 type link{
   id: ID!

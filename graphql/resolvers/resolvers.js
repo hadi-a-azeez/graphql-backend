@@ -24,6 +24,17 @@ module.exports =  {
     },
 },
 Mutation: {
+addLink: async(root, data, {model})=>{
+  try{
+    const obj = JSON.parse(JSON.stringify(data.linkObj));
+    const result = await models.links.create(obj);
+    console.log(result.dataValues);
+    return result.dataValues;
+  }
+  catch(err){
+    return err;
+  }
+},
   updateLink: async()=> {
     try{
       const linksResult = await models.links.findAll();
