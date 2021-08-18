@@ -16,7 +16,7 @@ module.exports =  {
     getLinks: async ()=>{
       try{
         const linksResult = await models.links.findAll();
-        return linksResult;
+        return JSON.parse(JSON.stringify(linksResult));
       }
       catch(err){
         console.log(err);
@@ -35,10 +35,11 @@ addLink: async(root, data, {model})=>{
     return err;
   }
 },
-  updateLink: async()=> {
+  updateLink: async(root, data, {model})=> {
     try{
+      const obj = JSON.parse(JSON.stringify(data.linkObj));
       const linksResult = await models.links.findAll();
-      return linksResult[0];
+      return linksResult;
     }
     catch(err){
       console.log(err);
